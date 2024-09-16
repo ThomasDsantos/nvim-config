@@ -1,13 +1,14 @@
 return {
   "linux-cultist/venv-selector.nvim",
   dependencies = {
-    "neovim/nvim-lspconfig", 
+    "nvim-telescope/telescope.nvim",
+    "neovim/nvim-lspconfig",
   },
   branch = "regexp",
-  keys = function ()
+  keys = function()
     return {
       { "<leader>vs", "<cmd>:VenvSelect<cr>" },
-      {"<leader>vc", "<cmd>:VenvSelectCached<cr>"}
+      { "<leader>vc", "<cmd>:VenvSelectCached<cr>" }
     }
   end,
   config = function()

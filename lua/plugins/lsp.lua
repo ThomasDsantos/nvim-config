@@ -77,7 +77,6 @@ return {
     })
   end,
   keys = {
-    { "<leader>lf", vim.lsp.buf.format },
     { '<leader>gd', vim.lsp.buf.definition },
     { '<leader>gD', vim.lsp.buf.declaration },
     { '<leader>gi', vim.lsp.buf.implementation },

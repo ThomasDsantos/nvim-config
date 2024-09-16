@@ -43,6 +43,36 @@ return {
             capabilities = capabilities
           }
         end,
+        ["ansiblels"] = function() -- override server setup
+          lspconfig.ansiblels.setup({
+            filetypes = {
+              "yaml",
+            },
+            settings = {
+              ansible = {
+                ansible = {
+                  path = "ansible",
+                  useFullyQualifiedCollectionNames = true
+                },
+                ansibleLint = {
+                  enabled = true,
+                  path = "ansible-lint"
+                },
+                executionEnvironment = {
+                  enabled = false
+                },
+                python = {
+                  interpreterPath = "python"
+                },
+                completion = {
+                  provideRedirectModules = true,
+                  provideModuleOptionAliases = true
+                }
+              },
+            },
+            capabilities = capabilities
+          })
+        end,
         ["lua_ls"] = function() -- override server setup
           lspconfig.lua_ls.setup {
             capabilities = capabilities,

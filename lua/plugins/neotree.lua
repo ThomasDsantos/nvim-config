@@ -18,12 +18,8 @@ return {
           enabled = true
         },
         hijack_netrw_behavior = "disabled",
-        filtered_items = {
-          visible = true,
-        }
       }
     })
-
     vim.keymap.set('n', '<leader>b', '<Cmd>Neotree toggle<CR>')
   end,
 }

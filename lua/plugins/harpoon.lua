@@ -18,6 +18,7 @@ return {
     vim.keymap.set("n", "<C-6>", function() harpoon:list():select(6) end)
     vim.keymap.set("n", "<C-7>", function() harpoon:list():select(7) end)
     vim.keymap.set("n", "<C-8>", function() harpoon:list():select(8) end)
+    vim.keymap.set("n", "<C-9>", function() harpoon:list():select(9) end)
     vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
     vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
   end

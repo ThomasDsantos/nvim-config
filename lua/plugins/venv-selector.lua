@@ -3,12 +3,13 @@ return {
   dependencies = {
     "nvim-telescope/telescope.nvim",
     "neovim/nvim-lspconfig",
+    'mfussenegger/nvim-dap-python'
   },
   branch = "regexp",
+  lazy="false",
   keys = function()
     return {
       { "<leader>vs", "<cmd>:VenvSelect<cr>" },
-      { "<leader>vc", "<cmd>:VenvSelectCached<cr>" }
     }
   end,
   config = function()

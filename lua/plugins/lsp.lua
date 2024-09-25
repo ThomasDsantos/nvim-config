@@ -118,6 +118,29 @@ return {
             capabilities = capabilities
           })
         end,
+        ["pylsp"] = function()
+          lspconfig.pylsp.setup {
+            settings = {
+              pylsp = {
+                plugins = {
+                  ruff = { enabled = true },
+                  rope_autoimport = { enabled = true },
+                  mypy = {
+                    enabled = true,
+                    live_mode = true,
+                    strict = true
+                  },
+                  isort = { enabled = true },
+                  pycodestyle = {
+                    enabled = true,
+                    ignore = { 'E501', 'E231' },
+                    maxLineLength = 120
+                  },
+                },
+              },
+            },
+          }
+        end,
         ["lua_ls"] = function() -- override server setup
           lspconfig.lua_ls.setup {
             capabilities = capabilities,
@@ -135,6 +158,7 @@ return {
 
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
     cmp.setup({
+      preselect = cmp.PreselectMode.Item,
       snippet = {
         expand = function(args)
           vim.snippet.expand(args.body)

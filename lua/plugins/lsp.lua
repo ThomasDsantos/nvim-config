@@ -33,7 +33,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "pylsp",
-        "ruff_lsp",
+        "pyright",
         "ansiblels",
         "rust_analyzer",
         "bashls",
@@ -120,22 +120,19 @@ return {
         end,
         ["pylsp"] = function()
           lspconfig.pylsp.setup {
+            enable = true,
             settings = {
               pylsp = {
                 plugins = {
-                  ruff = { enabled = true },
-                  rope_autoimport = { enabled = true },
+                  pycodestyle = {
+                    ignore = { 'E501', 'W503' },
+                  },
                   mypy = {
                     enabled = true,
-                    live_mode = true,
-                    strict = true
+                    dmypy = true,
                   },
-                  isort = { enabled = true },
-                  pycodestyle = {
-                    enabled = true,
-                    ignore = { 'E501', 'E231' },
-                    maxLineLength = 120
-                  },
+                  rope_autoimport = { enabled = true },
+                  ruff = { enabled = true },
                 },
               },
             },
@@ -158,6 +155,7 @@ return {
 
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
     cmp.setup({
+      enabled = true,
       preselect = cmp.PreselectMode.Item,
       snippet = {
         expand = function(args)
@@ -172,6 +170,8 @@ return {
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+      }, {
+        { name = 'buffer' }
       })
     })
   end,

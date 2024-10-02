@@ -9,6 +9,7 @@ return {
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/nvim-cmp",
+    "pmizio/typescript-tools.nvim",
   },
   config = function()
     local lspconfig = require('lspconfig')
@@ -34,6 +35,7 @@ return {
         "lua_ls",
         "pylsp",
         "pyright",
+        "ruff_lsp",
         "ansiblels",
         "rust_analyzer",
         "bashls",
@@ -88,6 +90,9 @@ return {
                 vim.bo.filetype = "yaml.ansible"
               end,
             })
+            lspconfig.ansiblels.setup({
+              capabilities = capabilities
+            })
           end
           lspconfig.ansiblels.setup({
             filetypes = {
@@ -132,10 +137,10 @@ return {
                     dmypy = true,
                   },
                   rope_autoimport = { enabled = true },
-                  ruff = { enabled = true },
                 },
               },
             },
+            capabilities = capabilities
           }
         end,
         ["lua_ls"] = function() -- override server setup
@@ -147,8 +152,34 @@ return {
                   globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
                 }
               }
+            },
+          }
+        end,
+        ["volar"] = function()
+          local opts = {
+            servers = {
+              tsservercontext = {},
             }
           }
+
+          lspconfig.volar.setup({
+            capabilities = capabilities,
+            filetypes = { "typescript", "javascript", "vue" },
+            server = opts
+          })
+          require("typescript-tools").setup({
+            server = opts,
+            settings = {
+              tsserver_plugins = {
+                "@vue/typescript-plugin",
+              },
+            },
+            filetypes = {
+              "javascript",
+              "typescript",
+              "vue",
+            },
+          })
         end
       }
     })

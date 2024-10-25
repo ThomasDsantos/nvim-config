@@ -123,26 +123,41 @@ return {
             capabilities = capabilities
           })
         end,
-        ["pylsp"] = function()
+        ["pyright"] = function()
           lspconfig.pylsp.setup {
-            enable = true,
             settings = {
-              pylsp = {
-                plugins = {
-                  pycodestyle = {
-                    ignore = { 'E501', 'W503' },
-                  },
-                  mypy = {
-                    enabled = true,
-                    dmypy = true,
-                  },
-                  rope_autoimport = { enabled = true },
+              python = {
+                analysis = {
+                  autoSearchPaths = true,
+                  useLibraryCodeForTypes = true,
+                  diagnosticMode = 'openFilesOnly',
                 },
               },
             },
-            capabilities = capabilities
+
           }
         end,
+        -- ["pylsp"] = function()
+        --   lspconfig.pylsp.setup {
+        --     enable = true,
+        --     settings = {
+        --       pylsp = {
+        --         plugins = {
+        --           pycodestyle = {
+        --             ignore = { 'E501', 'W503' },
+        --           },
+        --           mypy = {
+        --             enabled = true,
+        --             dmypy = true,
+        --           },
+        --           rope_autoimport = { enabled = true },
+        --           ruff = { enabled = false}
+        --         },
+        --       },
+        --     },
+        --     capabilities = capabilities
+        --   }
+        -- end,
         ["lua_ls"] = function() -- override server setup
           lspconfig.lua_ls.setup {
             capabilities = capabilities,

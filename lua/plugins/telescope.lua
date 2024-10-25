@@ -20,6 +20,9 @@ return {
     vim.keymap.set('n', '<leader>fga', function()
       builtin.live_grep({ additional_args = { "--hidden" }, glob_pattern = "!.git/" })
     end)
+    vim.keymap.set('n', '<leader>fgA', function()
+      builtin.live_grep({ additional_args = { "--hidden", "--no-ignore-vcs" }, glob_pattern = "!.git/" })
+    end)
   end,
   lazy = false,
   keys = function()

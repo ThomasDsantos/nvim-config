@@ -34,8 +34,6 @@ return {
       ensure_installed = {
         "lua_ls",
         "pylsp",
-        "pyright",
-        "ruff_lsp",
         "ansiblels",
         "rust_analyzer",
         "bashls",
@@ -125,22 +123,30 @@ return {
         end,
         ["pylsp"] = function()
           lspconfig.pylsp.setup {
-            enable = true,
+            -- cmd = { "pylsp", "-vvv", "--log-file", "/tmp/lsp.log" },
             settings = {
               pylsp = {
                 plugins = {
                   pycodestyle = {
-                    ignore = { 'E501', 'W503' },
+                    enabled = false
+                  },
+                  rope_autoimport = {
+                    enabled = true,
+                    memory = false,
+                  },
+                  pydocstyle = {
+                    enabled = false,
                   },
                   mypy = {
-                    enabled = true,
-                    dmypy = true,
+                    enabled = false,
                   },
-                  rope_autoimport = { enabled = true },
+                  ruff = {
+                    enabled = true,
+                    formatEnabled = true,
+                  },
                 },
               },
             },
-            capabilities = capabilities
           }
         end,
         ["lua_ls"] = function() -- override server setup

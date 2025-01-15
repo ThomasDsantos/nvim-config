@@ -32,17 +32,20 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "lua_ls",
-        "pylsp",
         "ansiblels",
-        "rust_analyzer",
         "bashls",
-        "volar",
+        "cspell",
+        "dockerls",
         "eslint",
-        "yamlls",
-        "jsonls",
         "helm_ls",
-        "dockerls"
+        "jsonls",
+        "lua_ls",
+        "pyright",
+        "ruff",
+        "rust_analyzer",
+        "volar",
+        "yamlls",
+        -- "pylsp"
       },
       handlers = {
         function(server_name) -- default handler
@@ -144,8 +147,12 @@ return {
                     enabled = true,
                     formatEnabled = true,
                   },
+                  jedi_completion = { fuzzy = true },
                 },
               },
+            },
+            flags = {
+              debounce_text_changes = 200,
             },
           }
         end,

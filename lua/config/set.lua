@@ -1,6 +1,5 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
-
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -27,4 +26,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
 

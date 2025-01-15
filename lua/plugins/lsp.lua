@@ -34,7 +34,6 @@ return {
       ensure_installed = {
         "ansiblels",
         "bashls",
-        "cspell",
         "dockerls",
         "eslint",
         "helm_ls",

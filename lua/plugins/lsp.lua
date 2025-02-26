@@ -42,6 +42,7 @@ return {
         "pyright",
         "ruff",
         "rust_analyzer",
+        "ts_ls",
         "volar",
         "yamlls",
         -- "pylsp"
@@ -168,28 +169,26 @@ return {
           }
         end,
         ["volar"] = function()
-          local opts = {
-            servers = {
-              tsservercontext = {},
-            }
-          }
-
           lspconfig.volar.setup({
             capabilities = capabilities,
-            filetypes = { "typescript", "javascript", "vue" },
-            server = opts
+            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
           })
-          require("typescript-tools").setup({
-            server = opts,
-            settings = {
-              tsserver_plugins = {
-                "@vue/typescript-plugin",
+        end,
+        ["ts_ls"] = function()
+          lspconfig.ts_ls.setup({
+            init_options = {
+              plugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = "/home/thdo/.nvm/versions/node/v22.14.0/lib/node_modules/@vue/typescript-plugin",
+                  languages = { "javascript", "typescript", "vue" },
+                },
               },
             },
             filetypes = {
               "javascript",
               "typescript",
-              -- "vue",
+              "vue",
             },
           })
         end

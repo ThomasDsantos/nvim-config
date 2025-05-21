@@ -8,5 +8,11 @@ return {
         delay = 200,
       },
     })
-  end
+  end,
+  keys = {
+    { "<leader>gn", "<cmd>Gitsigns next_hunk<cr>", desc = "Go next hunk" },
+    { "<leader>gN", "<cmd>Gitsigns prev_hunk<cr>", desc = "Go prev hunk" },
+    { "<leader>gip", "<cmd>Gitsigns preview_hunk_inline<cr>", desc = "Go prev hunk" },
+  },
+  lazy = false,
 }

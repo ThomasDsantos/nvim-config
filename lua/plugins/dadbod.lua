@@ -13,19 +13,11 @@ return {
       vim.g.db_ui_win_position = 'left'
       vim.g.db_ui_winwidth = 30
 
-
       -- opening it in a new tab
       vim.keymap.set('n', '<leader>db', ':tab DBUI<cr>', {})
 
       -- just close the tab, but context related of the keybinding
       vim.keymap.set('n', '<leader>dq', ':tabclose<cr>')
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "sql",
-        callback = function()
-          vim.bo.omnifunc = "vim_dadbod_completion#omni"
-        end,
-      })
     end,
   },
 }

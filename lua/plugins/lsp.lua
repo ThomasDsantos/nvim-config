@@ -56,36 +56,12 @@ return {
     require("fidget").setup({})
     require("mason").setup()
 
-    -- to move is lsp/ directory when this will work
-    vim.lsp.config('ts_ls', {
-      init_options = {
-        plugins = {
-          {
-            name = "@vue/typescript-plugin",
-            location = "/home/thdo/.nvm/versions/node/v23.9.0/lib/node_modules/@vue/typescript-plugin",
-            languages = { "javascript", "typescript", "vue" },
-          },
-        },
-      },
-      filetypes = {
-        "javascript",
-        "typescript",
-        "vue",
-      },
-    })
-    vim.lsp.config('volar', {
-      filetypes = {
-        "javascript",
-        "typescript",
-        "vue",
-      },
-    })
-
     vim.lsp.enable({
       "ansiblels",
       "bashls",
       "dockerls",
       "eslint",
+      "gopls",
       "helm_ls",
       "jsonls",
       "lua_ls",
@@ -93,7 +69,7 @@ return {
       "ruff",
       "rust_analyzer",
       "ts_ls",
-      "volar",
+      "vue_ls",
       "yamlls",
     })
   end,
